@@ -4,6 +4,7 @@ const multer = require('multer');
 const fs = require('fs-extra');
 const gulp = require('gulp');
 const spritesmith = require('gulp.spritesmith');
+const moveFile = require('./moveFile');
 
 const app = express();
 
@@ -21,14 +22,6 @@ app.listen(app.get('port'), function() {
 app.get('/', function(req, res) {
   res.render('main');
 });
-
-function move(from, to) {
-  return new Promise((resolve, reject) => {
-    fs.move(from, to, () => {
-      resolve();
-    });
-  });
-}
 
 function createSprite(algorithm, src, dest) {
   return new Promise((resolve, reject) => {
@@ -56,7 +49,7 @@ app.post('/process', upload.array('pictures', 10), function(req, res) {
     console.log(err);
 
     const filesPromises = req.files.map(file => {
-      return move(file.path, newFilesDirPath + file.filename);
+      return moveFile(file.path, newFilesDirPath + file.filename);
     });
 
     Promise.all(filesPromises).then(() => {
