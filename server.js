@@ -4,8 +4,9 @@ const multer = require('multer');
 const fs = require('fs-extra');
 const gulp = require('gulp');
 const spritesmith = require('gulp.spritesmith');
-const moveFile = require('./moveFile');
-const getNewFolderName = require('./getNewFolderName');
+const moveFile = require('./lib/moveFile');
+const mkdir = require('./lib/mkdir');
+const getNewFolderName = require('./lib/getNewFolderName');
 
 const app = express();
 

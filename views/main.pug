@@ -2,30 +2,70 @@ extends index
 
 block body  
   form.form(action="/process", method="POST", enctype="multipart/form-data")
-    .title Images
     
-    .form__upload
-      .fileload
-        .fileload__text Select
-        input.fileload__input(type="file", name="pictures", multiple)
+    section.section
+      .section__header
+        .title Step 1
       
-    .title algorithm
+      .buttons
+        .fileload
+          .fileload__text Open images
+          input.fileload__input(type="file", name="pictures", multiple)
     
-    label
-      input(type="radio", name="algorithm", value="top-down", checked)
-      | top-down
-    label
-      input(type="radio", name="algorithm", value="left-right")
-      | left-right
-    label
-      input(type="radio", name="algorithm", value="diagonal")
-      | diagonal
-    label
-      input(type="radio", name="algorithm", value="alt-diagonal")
-      | alt-diagonal
-    label
-      input(type="radio", name="algorithm", value="binary-tree")
-      | binary-tree
+    section.section
+      .section__header
+        .title Step 2
+        .subtitle Select sprite algorithm
+      
+      
+      .algorithms
+        .algorithms__button
+          label.algorithm
+            input.algorithm__input(type="radio", name="algorithm", value="top-down", checked)
+            .algorithm__inner
+              .algorithm__title top-down
+              .algorithm__icon
+                img.algorithm__icon-img(src="/img/top-down.svg", width="40")
+        
+        .algorithms__button
+          label.algorithm
+            input.algorithm__input(type="radio", name="algorithm", value="left-right")
+            .algorithm__inner
+              .algorithm__title left-right
+              .algorithm__icon
+                img.algorithm__icon-img(src="/img/left-right.svg", width="70")                  
+        
+        .algorithms__button
+          label.algorithm
+            input.algorithm__input(type="radio", name="algorithm", value="diagonal")
+            .algorithm__inner
+              .algorithm__title diagonal
+              .algorithm__icon
+                img.algorithm__icon-img(src="/img/diagonal.svg", width="70") 
+        
+        .algorithms__button
+          label.algorithm
+            input.algorithm__input(type="radio", name="algorithm", value="alt-diagonal")
+            .algorithm__inner
+              .algorithm__title alt-diagonal
+              .algorithm__icon
+                img.algorithm__icon-img(src="/img/alt-diagonal.svg", width="70") 
+        
+        .algorithms__button
+          label.algorithm
+            input.algorithm__input(type="radio", name="algorithm", value="binary-tree")
+            .algorithm__inner
+              .algorithm__title binary-tree
+              .algorithm__icon
+                img.algorithm__icon-img(src="/img/binary-tree.svg", width="70") 
+        
+    
+    section.section
+      .section__header
+        .title Step 3
+        .subtitle Input gutters value
+      
+      input(type="text")
     
     br
     button(type="submit") Отправить
