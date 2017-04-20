@@ -178,6 +178,7 @@ svg:not(:root) {
   position: relative;
   width: 100px;
   height: 100px;
+  margin: 0 auto;
 }
 
 .algorithm__icon-img {
