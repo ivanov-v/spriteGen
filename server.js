@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const gulp = require('gulp');
 const spritesmith = require('gulp.spritesmith');
 const moveFile = require('./moveFile');
+const getNewFolderName = require('./getNewFolderName');
 
 const app = express();
 
@@ -23,12 +24,6 @@ app.get('/', function(req, res) {
   res.render('main');
 });
 
-function createSprite(algorithm, src, dest) {
-  return new Promise((resolve, reject) => {
-
-  });
-}
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './tmp');
@@ -42,7 +37,7 @@ var upload = multer({ storage });
 
 app.post('/process', upload.array('pictures', 10), function(req, res) {
   const algorithm = req.body.algorithm;
-  const newFilesDirName = (new Date()).getTime();
+  const newFilesDirName = getNewFolderName();
   const newFilesDirPath = 'tmp/' + newFilesDirName + '/';
 
   fs.mkdir(newFilesDirPath, (err) => {
