@@ -1,0 +1,31 @@
+extends index
+
+block body  
+  form.form(action="/process", method="POST", enctype="multipart/form-data")
+    .title Images
+    
+    .form__upload
+      .fileload
+        .fileload__text Select
+        input.fileload__input(type="file", name="pictures", multiple)
+      
+    .title algorithm
+    
+    label
+      input(type="radio", name="algorithm", value="top-down", checked)
+      | top-down
+    label
+      input(type="radio", name="algorithm", value="left-right")
+      | left-right
+    label
+      input(type="radio", name="algorithm", value="diagonal")
+      | diagonal
+    label
+      input(type="radio", name="algorithm", value="alt-diagonal")
+      | alt-diagonal
+    label
+      input(type="radio", name="algorithm", value="binary-tree")
+      | binary-tree
+    
+    br
+    button(type="submit") Отправить

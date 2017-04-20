@@ -1,0 +1,98 @@
+:root {
+  --primary: #E63946;
+  --secondary: #8c8c8c;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+}
+
+.title {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.logo {
+  display: block;
+  font-size: 50px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo__word {
+  color: #fff;
+}
+
+.logo__ico {
+  display: block;
+  margin: 0 auto;
+  fill: #fff;
+  width: 70px;
+}
+
+.header {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background-color: var(--primary);
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 35px;
+}
+
+.button {
+  display: inline-block;
+  vertical-align: top;
+  padding: 13px 26px;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  background-color: var(--secondary);
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.fileload {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  padding: 13px 26px;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  background-color: var(--secondary);
+  border-radius: 30px;
+  color: #fff;
+}
+
+.fileload__input {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  display: block;
+  width: 120%;
+  opacity: 0;
+  line-height: 200px;
+  cursor: pointer;
+}
+
+.form {
+
+}
+
+.form__upload {
+  text-align: center;
+}
