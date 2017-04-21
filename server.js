@@ -38,6 +38,7 @@ var upload = multer({ storage });
 
 app.post('/process', upload.array('pictures', 10), function(req, res) {
   const algorithm = req.body.algorithm;
+  const padding = parseInt(req.body.padding, 10);
   const newFilesDirName = getNewFolderName();
   const newFilesDirPath = 'tmp/' + newFilesDirName + '/';
 
@@ -53,7 +54,8 @@ app.post('/process', upload.array('pictures', 10), function(req, res) {
         .pipe(spritesmith({
           imgName: 'sprite.png',
           cssName: 'sprite.css',
-          algorithm
+          algorithm,
+          padding
         }))
         .pipe(gulp.dest(newFilesDirPath))
         .on('end', () => {

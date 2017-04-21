@@ -9,7 +9,7 @@ block body
       
       .buttons
         .fileload
-          .fileload__text Open images
+          .fileload__text Select images
           input.fileload__input(type="file", name="pictures", multiple)
     
     section.section
@@ -63,9 +63,9 @@ block body
     section.section
       .section__header
         .title Step 3
-        .subtitle Input gutters value
+        .subtitle Input padding size
       
-      input(type="text")
+      input.input(type="number", min="0", max="20", value="2", name="padding")
     
-    br
-    button(type="submit") Отправить
+    .buttons
+      button.button.button_acccent(type="submit") GENERATE SPRITE!

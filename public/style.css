@@ -10,6 +10,7 @@
   --palette-title: var(--x-palette-3);
   --palette-subtitle: var(--x-palette-5);
   --palette-button: var(--x-palette-2);
+  --palette-button-accent: var(--x-palette-4);
 }
 
 html {
@@ -79,15 +80,24 @@ svg:not(:root) {
 }
 
 .button {
+  position: relative;
   display: inline-block;
   vertical-align: top;
-  padding: 13px 26px;
+  padding: 15px 45px;
   font-size: 20px;
   font-weight: 400;
   text-align: center;
-  text-decoration: none;
+  border: none;
   background-color: var(--palette-button);
   color: #fff;
+  font-family: inherit;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button_acccent {
+  background-color: var(--palette-button-accent);
 }
 
 .fileload {
@@ -114,23 +124,8 @@ svg:not(:root) {
   cursor: pointer;
 }
 
-.form {
-
-}
-
 .form__upload {
   text-align: center;
-}
-
-.step {
-  display: inline-block;
-  vertical-align: top;
-  width: 50px;
-  line-height: 50px;
-  border-radius: 50%;
-  text-align: center;
-  background-color: var(--palette-step);
-  color: #000;
 }
 
 .section {
@@ -208,4 +203,18 @@ svg:not(:root) {
 
 .algorithms__button:not(:last-child) {
   margin-right: 10px;
+}
+
+.input {
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: 200px;
+  padding: 0 10px;
+  background-color: #fff;
+  border: 2px solid #f0f0f0;
+  outline: none;
+  font-family: inherit;
+  font-size: 20px;
+  text-align: center;
 }
