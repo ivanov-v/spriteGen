@@ -42,28 +42,34 @@ app.post('/process', upload.array('pictures', 10), function(req, res) {
   const newFilesDirName = getNewFolderName();
   const newFilesDirPath = 'tmp/' + newFilesDirName + '/';
 
-  fs.mkdir(newFilesDirPath, (err) => {
-    console.log(err);
+  mkdir(newFilesDirPath)
+  .then(() => req.files.map(file => moveFile(file.path, newFilesDirPath + file.filename)))
+  .then(filesPromises => {
+    Promise.all(filesPromises)
+    .then(() => {
+      gulp
+      .src(newFilesDirPath + '/*.png')
+      .pipe(spritesmith({
+        imgName: 'sprite.png',
+        cssName: 'sprite.css',
+        algorithm,
+        padding
+      }))
+      .pipe(gulp.dest(newFilesDirPath))
+      .on('end', () => {
+        fs.readFile(newFilesDirPath + '/sprite.css', 'UTF-8', (err, data) => {
+          if (err) throw err;
 
-    const filesPromises = req.files.map(file => {
-      return moveFile(file.path, newFilesDirPath + file.filename);
-    });
-
-    Promise.all(filesPromises).then(() => {
-      gulp.src(newFilesDirPath + '/*.png')
-        .pipe(spritesmith({
-          imgName: 'sprite.png',
-          cssName: 'sprite.css',
-          algorithm,
-          padding
-        }))
-        .pipe(gulp.dest(newFilesDirPath))
-        .on('end', () => {
           res.render('process', {
-            sprite: newFilesDirName + '/sprite.png'
+            sprite: newFilesDirName + '/sprite.png',
+            style: data
           });
-        })
+        });
+      });
     });
+  })
+  .catch(err => {
+    throw err;
   });
 });
 

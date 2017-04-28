@@ -15,6 +15,8 @@
 
 html {
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 *,
@@ -26,6 +28,8 @@ html {
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   background-color: #fff;
 }
@@ -68,8 +72,8 @@ svg:not(:root) {
 }
 
 .header {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 80px;
+  padding-bottom: 100px;
   background-color: var(--palette-header);
 }
 
@@ -139,6 +143,10 @@ svg:not(:root) {
 
 .buttons {
   text-align: center;
+}
+
+.buttons_top {
+  margin-top: -54px;
 }
 
 .algorithm {
@@ -217,4 +225,28 @@ svg:not(:root) {
   font-family: inherit;
   font-size: 20px;
   text-align: center;
+}
+
+.result {
+  display: flex;
+}
+
+.result__image-wrap {
+  padding: 50px;
+  flex-basis: 50%;
+  flex-shrink: 0;
+  background-image: url('./img/square.svg');
+  background-repeat: repeat;
+  overflow: auto;
+}
+
+.result__style-wrap {
+  padding: 50px;
+  flex-basis: 50%;
+  flex-shrink: 0;
+  overflow: auto;
+  -webkit-user-select: all;  /* Chrome all / Safari all */
+  -moz-user-select: all;     /* Firefox all */
+  -ms-user-select: all;      /* IE 10+ */
+  user-select: all;
 }

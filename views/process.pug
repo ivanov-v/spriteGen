@@ -1,7 +1,11 @@
 extends index
 
 block body
-  .buttons
+  .buttons.buttons_top
     a.button.js-history-back(href="/") Back
-  img(src=sprite, alt="")
     
+  .result
+    a(href=sprite).result__image-wrap
+      img(src=sprite, alt="")
+    .result__style-wrap
+      pre.result__style-pre= style
